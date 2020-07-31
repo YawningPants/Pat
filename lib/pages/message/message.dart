@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pat/app/components/message_item.dart';
 import 'package:pat/app/models/message.dart';
 
 class MessagePage extends StatefulWidget {
@@ -33,6 +32,7 @@ class _MessagePageState extends State<MessagePage> {
                 ),
               title: Text(messages[index].name),
               subtitle: Container(child: Text(messages[index].lastMessage),height: 20,),
+              onTap: (){},
             );
           },
         )

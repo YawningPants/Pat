@@ -65,6 +65,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
             ),
             child: Row(
               children: [
+                //用户头像
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: CircleAvatar(
@@ -74,6 +75,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
                     ),
                   ),
                 ),
+
+                //用户简介
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,

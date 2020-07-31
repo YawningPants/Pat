@@ -10,4 +10,6 @@ class Message {
     this.lastMessage=lastMessage;
   }
 
+
+
 }
