@@ -16,7 +16,7 @@ class FrameworkPage extends StatefulWidget {
 
 class _FrameworkPageState extends State<FrameworkPage> {
   int pageIndex = 0;
-  static const List<String> pageTitle = ["主页","产品","消息"] ;
+  static const List<String> pageTitle = ["主页","全部产品","消息"] ;
 
 //  pageTitle.add("主页");
 //  pageTitle.add("产品");
@@ -33,7 +33,41 @@ class _FrameworkPageState extends State<FrameworkPage> {
   }
 
   Widget buildAppBar() {
-    if (pageIndex == 3) return null;
+    if (pageIndex == 3 ) return null;
+    if(pageIndex == 1){
+      return AppBar(
+        elevation: 0.5,
+        centerTitle: true,
+        title: Text(
+          pageTitle[pageIndex],
+          style:FontUtil.h2Style.copyWith(color: Colors.black),
+        ),
+        leading: GestureDetector(
+          child: Hero(
+            tag: "search_bar",
+            child:Icon(
+              FontAwesome.search,
+              size: 17,
+              color: Colors.black54,
+            )
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => SearchPage(),
+            ),
+          ),
+        ),
+        actions: <Widget>[
+          Center(
+//            mainAxisAlignment: MainAxisAlignment.center,
+            child:
+              Text("筛选    ",style: FontUtil.h2Style.copyWith(fontSize: 16))
+
+          )
+        ]
+          );
+
+    }
     return AppBar(
       elevation: 0.5,
       centerTitle: true,
@@ -56,6 +90,8 @@ class _FrameworkPageState extends State<FrameworkPage> {
         ),
       ),
     );
+
+
   }
 
   Widget buildPages() {
