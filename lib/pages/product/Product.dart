@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pat/app/components/Product_bar.dart';
+import 'file:///D:/Git/Flutter_App/pat/lib/pages/product/Product_bar.dart';
 import 'package:pat/app/models/insurance.dart';
 import 'package:pat/pages/product/ProductTabPage.dart';
 
@@ -53,7 +53,8 @@ class _ProductPagePageState extends State<ProductPage> {
         130.0,
         "宠物狗专项保障  意外诊疗或手术治疗",
         2,
-        2
+        2,
+        "https://m.inswin.cn/g123034/jiacai-baoxian/319096.shtml?from=singlemessage"
     ));
     insList.add(Insurance(
         "华安犬类宠物饲养人责任保险",
@@ -62,7 +63,8 @@ class _ProductPagePageState extends State<ProductPage> {
         50.0,
         "宠物狗专项保障  意外诊疗或手术治疗",
         1,
-        3
+        3,
+        "https://m.inswin.cn/g123034/jiacai-baoxian/319096.shtml?from=singlemessage"
     ));
   }
 

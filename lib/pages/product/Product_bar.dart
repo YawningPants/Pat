@@ -6,7 +6,7 @@ import 'package:pat/app/utils/font.dart';
 
 class ProductBar extends StatefulWidget{
 
-  ProductBar({Key key,this.formList:null,@required this.groupValueChanged});
+  ProductBar({Key key,this.formList,@required this.groupValueChanged});
   final List formList;
   final ValueChanged<int>groupValueChanged;
 

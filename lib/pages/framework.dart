@@ -3,24 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:pat/app/components/search_bar.dart';
 import 'package:pat/app/utils/font.dart';
+import 'package:pat/pages/home/Discovery_Widget.dart';
 import 'package:pat/pages/product/Product.dart';
 import 'package:pat/pages/message/message.dart';
 import 'package:pat/pages/search.dart';
 import 'package:pat/pages/home/home.dart';
 import 'package:pat/pages/user/user.dart';
+import 'package:pat/pages/web_page/Web_Page.dart';
+
 
 class FrameworkPage extends StatefulWidget {
   @override
   _FrameworkPageState createState() => _FrameworkPageState();
 }
 
+
+
 class _FrameworkPageState extends State<FrameworkPage> {
   int pageIndex = 0;
   static const List<String> pageTitle = ["主页","全部产品","消息"] ;
-
-//  pageTitle.add("主页");
-//  pageTitle.add("产品");
-//  pageTitle.add("消息");
+  void _handlePageIndexChanged(int newValue){
+    setState(() {
+      pageIndex=newValue;
+    });
+  }
 
 
   @override
@@ -98,8 +104,9 @@ class _FrameworkPageState extends State<FrameworkPage> {
     return IndexedStack(
       index: pageIndex,
       children: [
-        HomePage(),
+        HomePage(pageIndexChanged: _handlePageIndexChanged,),
         ProductPage(),
+//        WebPage(),
         MessagePage(),
         UserProfilePage(),
       ],
@@ -136,7 +143,7 @@ class _FrameworkPageState extends State<FrameworkPage> {
             title: Text("主页"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(AntDesign.bank),
+            icon: Icon(Icons.pets),
             title: Text("产品"),
           ),
           BottomNavigationBarItem(

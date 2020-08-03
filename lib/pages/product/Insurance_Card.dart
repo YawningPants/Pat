@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pat/app/models/insurance.dart';
 import 'package:pat/app/utils/font.dart';
+import 'package:pat/pages/web_page/Web_Page.dart';
 
 class InsCard extends StatelessWidget{
-  InsCard({Key key,this.insurance:null}):super(key:key);
-  Insurance insurance;
+  InsCard({Key key,this.insurance}):super(key:key);
+  final Insurance insurance;
   @override
   Widget build(BuildContext context) {
     if(insurance==null)
@@ -56,20 +57,28 @@ class InsCard extends StatelessWidget{
             SizedBox(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                //child:Image.network(insurance.bg,fit: BoxFit.cover,)
-                child:
-                Container(
-                  decoration: BoxDecoration(
-                    image:DecorationImage(
-                      image: AssetImage(insurance.bg),
-                      //NetworkImage(insurance.bg),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.vertical(top:Radius.circular(4.0))//这里存在问题，只能设置左上角不能设置右上角
-
-                  ),
-
+                child: ClipRRect(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(14)),
+                  child:  Image.asset(insurance.bg,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,),
                 ),
+                //child:Image.network(insurance.bg,fit: BoxFit.cover,)
+//                child:
+//                Container(
+//                  decoration: BoxDecoration(
+//                    image:DecorationImage(
+//                      image: AssetImage(insurance.bg),
+//                      //NetworkImage(insurance.bg),
+//                      fit: BoxFit.cover,
+//                    ),
+//                    borderRadius: BorderRadius.vertical(top:Radius.circular(4.0))//这里存在问题，只能设置左上角不能设置右上角
+//
+//                  ),
+//
+//                ),
+
             ),
 
             // 背景图遮罩
@@ -91,8 +100,12 @@ class InsCard extends StatelessWidget{
                       title: Text("销量:  ${insurance.salesVol}",style: FontUtil.normalBoldTextStyle.copyWith(color: Colors.black45,fontSize: 12,decoration: TextDecoration.underline),),
                     ),
                     ListTile(
-                      title: Text(insurance.name,style: FontUtil.h2Style.copyWith()),
-                      subtitle: Text(insurance.introduce,style: FontUtil.normalTextStyle.copyWith(fontSize: 13),),
+                      title: Text(insurance.name,style: FontUtil.h2Style.copyWith(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,),
+                      subtitle: Text(insurance.introduce,style: FontUtil.normalTextStyle.copyWith(fontSize: 13),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,),
                     )
 
                   ],
@@ -122,6 +135,21 @@ class InsCard extends StatelessWidget{
                     )
                 ),
               ),
+            ),
+
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child:FlatButton(
+                onPressed: ()=>Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => WebPage(
+                      webUrl: insurance.webUrl,
+                      webTitle: insurance.name,
+                    )
+                  ),
+                ),
+              ),
             )
 
           ],
@@ -145,7 +173,14 @@ class InsCard extends StatelessWidget{
           color: Colors.blue,
           child:
           Text("获取保障",style: FontUtil.h2Style.copyWith(color: Colors.white),),
-          onPressed: ()=>{},
+          onPressed: ()=>Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => WebPage(
+                webUrl: insurance.webUrl,
+                webTitle: insurance.name,
+              ),
+            ),
+          ),
         ),
       )
     ;
@@ -154,8 +189,8 @@ class InsCard extends StatelessWidget{
 }
 
 class CardList extends StatelessWidget{
-  CardList({Key key,this.insList:null}):super(key : key);
-  List insList;
+  CardList({Key key,this.insList}):super(key : key);
+  final List insList;
   Widget buildItem(BuildContext context,int index){
     return InsCard(
         insurance:insList[index]);

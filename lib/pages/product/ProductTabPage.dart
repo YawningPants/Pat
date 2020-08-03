@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:pat/app/components/Insurance_Card.dart';
+import 'file:///D:/Git/Flutter_App/pat/lib/pages/product/Insurance_Card.dart';
 import 'package:pat/app/models/insurance.dart';
 import 'package:pat/app/utils/font.dart';
 
