@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'file:///D:/Git/Flutter_App/pat/lib/pages/product/Product_bar.dart';
 import 'package:pat/app/models/insurance.dart';
 import 'package:pat/pages/product/ProductTabPage.dart';
+import 'package:pat/pages/product/ShaiXuan/ShaiXuanUtil.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -64,9 +65,24 @@ class _ProductPagePageState extends State<ProductPage> {
         "宠物狗专项保障  意外诊疗或手术治疗",
         1,
         3,
-        "https://m.inswin.cn/g123034/jiacai-baoxian/319096.shtml?from=singlemessage"
+        "https://m.sinosafe.com.cn/micro-plat/app/policy-common-comp-page.html?productId=P041204&isMulti=1&salesCode=108052213&issueChannel=2&SALE_COUNT=51&share=zhanye-app-share&from=singlemessage"
     ));
+
+    sortInsList();
   }
+  void sortInsList()
+  {
+    if(ShaiXuanUtil.shaixuanType==0)
+      return;
+    if(ShaiXuanUtil.shaixuanType==1)//价格从低到高
+      insList.sort((left,right)=>left.price.compareTo(right.price));
+    else if(ShaiXuanUtil.shaixuanType==2)//价格从高到低
+      insList.sort((left,right)=>right.price.compareTo(left.price));
+    else if(ShaiXuanUtil.shaixuanType==3)
+      insList.sort((left,right)=>right.salesVol.compareTo(left.salesVol));
+    return;
+  }
+
 
 
   @override
@@ -78,6 +94,10 @@ class _ProductPagePageState extends State<ProductPage> {
         insList: insList,
         insType: insIndex,
       ),
+
+//      body: Center(
+//        child:Text("${insList[1].name}")
+//      ),
     );
 
 

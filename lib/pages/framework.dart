@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -6,6 +8,7 @@ import 'package:pat/app/utils/font.dart';
 import 'package:pat/pages/home/Discovery_Widget.dart';
 import 'package:pat/pages/product/Product.dart';
 import 'package:pat/pages/message/message.dart';
+import 'package:pat/pages/product/ShaiXuan/ShaiXuanPage.dart';
 import 'package:pat/pages/search.dart';
 import 'package:pat/pages/home/home.dart';
 import 'package:pat/pages/user/user.dart';
@@ -64,12 +67,29 @@ class _FrameworkPageState extends State<FrameworkPage> {
           ),
         ),
         actions: <Widget>[
-          Center(
-//            mainAxisAlignment: MainAxisAlignment.center,
+          Container(
+            padding: EdgeInsets.only(right: 10.0),
             child:
-              Text("筛选    ",style: FontUtil.h2Style.copyWith(fontSize: 16))
+            Center(
+//            padding: EdgeInsets.all(5.0),
 
+                child:
+//              Text("筛选    ",style: FontUtil.h2Style.copyWith(fontSize: 16))
+                FlatButton(
+                  child: Text("筛选",style: FontUtil.h2Style.copyWith(fontSize: 16)),
+                  onPressed: ()async{
+                    await Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => ShaiXuanPage()
+                      ),
+                    );
+                    setState(() {});
+                  }
+                )
+
+            ),
           )
+
         ]
           );
 
@@ -106,7 +126,6 @@ class _FrameworkPageState extends State<FrameworkPage> {
       children: [
         HomePage(pageIndexChanged: _handlePageIndexChanged,),
         ProductPage(),
-//        WebPage(),
         MessagePage(),
         UserProfilePage(),
       ],
@@ -157,6 +176,15 @@ class _FrameworkPageState extends State<FrameworkPage> {
         ],
       ),
     );
+  }
+
+  _waitPagePop(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (context) => ShaiXuanPage()
+      ),
+    );
+//    setState;
   }
 }
 

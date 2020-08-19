@@ -42,7 +42,7 @@ packages:
       name: bot_toast
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.2+1"
   charcode:
     dependency: transitive
     description:
@@ -77,7 +77,7 @@ packages:
       name: dio
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.9"
+    version: "3.0.10"
   draggable_scrollbar_sliver:
     dependency: "direct main"
     description:
@@ -117,7 +117,7 @@ packages:
       name: flutter_screenutil
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   flutter_spinkit:
     dependency: "direct main"
     description:
@@ -131,7 +131,7 @@ packages:
       name: flutter_staggered_grid_view
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.1"
+    version: "0.3.2"
   flutter_swiper:
     dependency: "direct main"
     description:
@@ -387,4 +387,4 @@ packages:
     version: "3.6.1"
 sdks:
   dart: ">=2.7.0 <3.0.0"
-  flutter: ">=1.12.13+hotfix.5 <2.0.0"
+  flutter: ">=1.17.0 <2.0.0"
